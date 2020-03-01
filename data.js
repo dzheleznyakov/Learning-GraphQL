@@ -15,16 +15,19 @@ let cars = [{
   make: 'Chevrolet',
   model: 'Aveo',
   colour: 'black',
+  ownedBy: 1,
 }, {
   id: 2,
   make: 'Mercedez',
   model: 'Benz',
   colour: 'black',
+  ownedBy: 1,
 }, {
   id: 3,
   make: 'Nissan',
   model: 'Passat',
   colour: 'blue',
+  ownedBy: 3,
 }];
 
 module.exports = {
