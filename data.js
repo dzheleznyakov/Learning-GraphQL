@@ -1,12 +1,12 @@
 let users = [{
   id: 1,
-  name: 'Tamas',
+  name: 'Dmitriy',
 }, {
   id: 2,
   name: 'Susan',
 }, {
   id: 3,
-  name: 'Stevn',
+  name: 'Steven',
 }];
 
 module.exports = {
