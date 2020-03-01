@@ -9,6 +9,25 @@ let users = [{
   name: 'Steven',
 }];
 
+
+let cars = [{
+  id: 1,
+  make: 'Chevrolet',
+  model: 'Aveo',
+  colour: 'black',
+}, {
+  id: 2,
+  make: 'Mercedez',
+  model: 'Benz',
+  colour: 'black',
+}, {
+  id: 3,
+  make: 'Nissan',
+  model: 'Passat',
+  colour: 'blue',
+}];
+
 module.exports = {
   users,
+  cars,
 };
