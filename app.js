@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 const { ApolloServer, gql } = require('apollo-server-express');
-const { users, cars } = require('./data')
+let { users, cars } = require('./data')
 
 const me = users[0];
 
@@ -14,6 +14,13 @@ const typeDefs = gql`
     car(id: Int!): Car
     
     me: User
+  }
+
+  type Mutation {
+    makeUser(id: Int!, name: String!): User!
+    removeUser(id: Int!): Boolean
+    createCar(id: Int!, make: String!, model: String!, colour: String!): Car!
+    removeCar(id: Int!): Boolean
   }
 
   type User {
@@ -43,6 +50,34 @@ const resolvers = {
       return car[0];
     },
     me: () => me,
+  },
+  Mutation: {
+    makeUser: (parent, { id, name }) => {
+      const user = { id, name };
+      users.push(user);
+      return user;
+    },
+    removeUser: (parent, { id }) => {
+      let found = false;
+      users = users.filter(user => {
+        if (user.id === id) found = true;
+        else return user;
+      });
+      return found;
+    },
+    createCar: (parent, { id, make, model, colour }) => {
+      const car = { id, make, model, colour };
+      cars.push(car);
+      return car;
+    },
+    removeCar: (parent, { id }) => {
+      let found = false;
+      cars = cars.filter(car => {
+        if (car.id === id) found = true;
+        else return car;
+      });
+      return found;
+    },
   },
   Car: {
     owner: (parent) => users[parent.ownedBy - 1],
