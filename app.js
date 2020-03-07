@@ -19,6 +19,7 @@ const typeDefs = gql`
   type User {
     id: ID!
     name: String!
+    car: [Car]
   }
 
   type Car {
@@ -46,6 +47,11 @@ const resolvers = {
   Car: {
     owner: (parent) => users[parent.ownedBy - 1],
   },
+  User: {
+    car: (parent) => {
+      return parent.cars.map(carId => cars[carId - 1]);
+    }
+  }
 };
 
 const server = new ApolloServer({
